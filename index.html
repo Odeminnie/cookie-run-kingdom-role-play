@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Run Kingdom Roleplay</title>
+    
+    <meta name="theme-color" content="#FF9E2C">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5351/5351473.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Mali:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -28,22 +33,18 @@
             <div class="logo-container">
                 <img src="crk-logo.png" alt="Cookie Run Kingdom Logo" class="game-logo floating">
             </div>
-            
             <div class="start-text-container">
                 <p class="blink-text desktop-text"> </p>
                 <p class="blink-text mobile-text">Tap Screen to Start</p>
             </div>
         </div>
-
         <div class="mc-tip-container">
             <span id="mc-tip-text" class="mc-tip-text">รู้หรือไม่: คุกกี้ไม่ควรลงน้ำนะ!</span>
         </div>
-
         <div class="version-text">ver 0.1.0 (โค้ดเบต้า) | Powered by milky way cookie</div>
     </div>
 
     <div id="kingdom-hub" class="hidden">
-        
         <header class="hub-header">
             <div class="header-left">
                 <span class="currency gem">💎 0</span>
@@ -58,7 +59,6 @@
         </header>
 
         <main class="hub-center">
-            
             <div class="main-cta-container">
                 <a href="https://discord.gg/tSr3ugaMvn" target="_blank" class="discord-gate-btn">
                     <div class="btn-shine"></div>
@@ -77,40 +77,86 @@
                     <span class="icon">📜</span>
                     <span class="label" data-th="กฎอาณาจักร" data-en="Kingdom Rules">กฎอาณาจักร</span>
                 </button>
-                
                 <a href="https://forms.gle/LinkSamak" target="_blank" class="menu-item item-apply">
                     <span class="icon">📝</span>
                     <span class="label" data-th="ใบสมัครพลเมือง" data-en="Citizenship App">ใบสมัครพลเมือง</span>
                 </a>
-
                 <button onclick="openModal('minigames')" class="menu-item item-games">
                     <span class="icon">⚔️</span>
                     <span class="label" data-th="ข้อมูลอารีน่า" data-en="Arena Info">ข้อมูลอารีน่า</span>
                 </button>
-
                 <button onclick="openModal('store')" class="menu-item item-store">
                     <span class="icon">🛒</span>
                     <span class="label" data-th="ร้านค้ากิลด์" data-en="Guild Store">ร้านค้ากิลด์</span>
                 </button>
-
                 <a href="story.html" class="menu-item item-gallery">
                     <span class="icon">🌠</span>
                     <span class="label" data-th="story" data-en="story">story</span>
                 </a>
-
                 <button onclick="openModal('game-selector')" class="menu-item item-play-game">
                     <span class="icon">🎮</span>
                     <span class="label" data-th="เล่นมินิเกม" data-en="Play Minigames">เล่นมินิเกม</span>
                 </button>
-
                 <button onclick="openModal('music')" class="menu-item item-music">
                     <span class="icon">🎵</span>
                     <span class="label" data-th="เพลงอาณาจักร" data-en="Kingdom Music">เพลงอาณาจักร</span>
                 </button>
-
                 <button onclick="openModal('news')" class="menu-item item-news">
                     <span class="icon">📢</span>
                     <span class="label" data-th="ข่าวสาร/ติดตาม" data-en="News & Social">ข่าวสาร/ติดตาม</span>
+                </button>
+            </div>
+        </main>
+
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal-window">
+                <button class="close-modal-btn" onclick="closeModal()">&times;</button>
+                <div id="modal-content-area">
+                    <section id="rules" class="info-paper hidden">
+                        <h2 data-th="📜 พระราชบัญญัติคุกกี้" data-en="📜 Cookie Constitution">📜 พระราชบัญญัติคุกกี้ (Server Rules)</h2>
+                        <div class="paper-inner">
+                            <ul class="cookie-rules-list">
+                                <li data-th="1. No Crumbs Left Behind: เคารพกันและกัน" data-en="1. No Crumbs Left Behind: Respect each other"><strong>1. No Crumbs Left Behind</strong> เคารพกันและกัน ห้ามบูลลี่</li>
+                                </ul>
+                        </div>
+                    </section>
+                    
+                    <section id="profile-settings" class="info-paper hidden">
+                        <h2 data-th="👤 โปรไฟล์ของฉัน" data-en="👤 My Profile">👤 โปรไฟล์ของฉัน</h2>
+                        <div class="paper-inner profile-layout">
+                            <div class="profile-pic-large"><img src="po.jpeg" alt="Profile"></div>
+                            <div class="profile-name-area"><span class="user-name-text">You</span></div>
+                            <hr class="divider">
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <span data-th="🎵 เสียงเพลง" data-en="🎵 Music & SFX">🎵 เสียงเพลง</span>
+                                    <label class="switch"><input type="checkbox" id="sound-toggle" checked><span class="slider round"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgm-opening" src="openingonwebsite.mp3" loop preload="auto"></audio>
+    <audio id="bgm-hub" src="menu_theme.mp3" loop preload="auto"></audio>
+    <audio id="sfx-click" src="click.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('PWA Service Worker Registered!'))
+                    .catch(err => console.log('PWA Service Worker Failed', err));
+            });
+        }
+    </script>
+</body>
+</html>
                 </button>
             </div>
 
