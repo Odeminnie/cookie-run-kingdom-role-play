@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Run Kingdom Roleplay</title>
     
-    <meta name="theme-color" content="#FF9E2C">
     <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF9E2C">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5351/5351473.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Mali:wght@400;700&display=swap" rel="stylesheet">
@@ -111,6 +111,107 @@
         <div id="modal-overlay" class="modal-overlay hidden">
             <div class="modal-window">
                 <button class="close-modal-btn" onclick="closeModal()">&times;</button>
+                <div id="modal-content-area">
+                    
+                    <section id="rules" class="info-paper hidden">
+                        <h2 data-th="📜 พระราชบัญญัติคุกกี้" data-en="📜 Cookie Constitution">📜 พระราชบัญญัติคุกกี้ (Server Rules)</h2>
+                        <div class="paper-inner">
+                            <p class="quote" data-th='"เพื่อความกรอบอร่อยและสันติสุขแห่ง Earthbread จงปฏิบัติตามนี้"' data-en='"For the crispiness and peace of Earthbread, follow these rules."'>"เพื่อความกรอบอร่อยและสันติสุขแห่ง Earthbread จงปฏิบัติตามนี้"</p>
+                            <ul class="cookie-rules-list">
+                                <li data-th="1. No Crumbs Left Behind: เคารพกันและกัน ห้ามบูลลี่ (OOC)" data-en="1. No Crumbs Left Behind: Respect each other, No bullying (OOC)"><strong>1. No Crumbs Left Behind</strong> เคารพกันและกัน ห้ามบูลลี่ ห้ามเหยียด (OOC)</li>
+                                <li data-th="2. Roleplay Logic: ห้าม Power-gaming หรือ Metagaming" data-en="2. Roleplay Logic: No Power-gaming or Metagaming"><strong>2. Roleplay Logic</strong> ห้าม Power-gaming หรือ Metagaming เล่นตามบทบาท</li>
+                                <li data-th="3. Kingdom Harmony: ห้ามทุบทำลายสิ่งก่อสร้าง หรือขโมยสมบัติ" data-en="3. Kingdom Harmony: Do not destroy buildings or steal treasures"><strong>3. Kingdom Harmony</strong> ห้ามทุบทำลายสิ่งก่อสร้าง หรือขโมยสมบัติเพื่อน</li>
+                                <li data-th="4. Voice Etiquette: ใช้ไมค์สุภาพ และใช้ Push-to-Talk เสมอ" data-en="4. Voice Etiquette: Be polite in VC, use Push-to-Talk"><strong>4. Voice Etiquette</strong> ใช้ไมค์สุภาพ และใช้ Push-to-Talk เสมอ</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="game-selector" class="info-paper theme-blue hidden">
+                        <h2 data-th="🎮 เลือกการผจญภัย" data-en="🎮 Select Game">🎮 เลือกเกม</h2>
+                        <div class="paper-inner">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <button onclick="navigateGame('./PIU_MP3_edition/Minigames.html')" class="menu-item" style="box-shadow: 0 6px 0 #2980B9; width: 100%;">
+                                    <span class="label">PIU MP3</span>
+                                </button>
+                                <button onclick="navigateGame('./PIU_YouTube_edition/Minigames.html')" class="menu-item" style="box-shadow: 0 6px 0 #2980B9; width: 100%;">
+                                    <span class="label">PIU YouTube</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="minigames" class="info-paper theme-blue hidden">
+                        <h2 data-th="⚔️ Kingdom Arena" data-en="⚔️ Kingdom Arena">⚔️ Kingdom Arena</h2>
+                        <div class="paper-inner">
+                            <div style="background: white; padding: 15px; border-radius: 12px; margin-bottom: 10px;">
+                                <h3>🏃 Cookie Parkour</h3>
+                                <p>กระโดดหนีเตาอบ! ผ่านด่านสุดโหดเพื่อชิงเพชร</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="store" class="info-paper theme-yellow hidden">
+                        <h2 data-th="🛒 ร้านค้ากิลด์" data-en="🛒 Guild Store">🛒 ร้านค้ากิลด์</h2>
+                        <div class="paper-inner">
+                            <button class="store-btn">💎 Top-up Diamond (Soon)</button>
+                        </div>
+                    </section>
+
+                    <section id="music" class="info-paper theme-pink hidden">
+                        <h2 data-th="🎵 เพลงแห่งอาณาจักร" data-en="🎵 Kingdom Music">🎵 เพลงแห่งอาณาจักร</h2>
+                        <div class="paper-inner">
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 10px; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between;">
+                                    <span>🎹 Main Theme</span>
+                                    <button onclick="triggerDevAlert()" style="background:var(--crk-pink); color:white; border:none; border-radius:5px; padding:5px;">▶ Play</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="news" class="info-paper theme-green hidden">
+                        <h2 data-th="📢 ข่าวสาร & ติดตาม" data-en="📢 News & Social">📢 ข่าวสาร & ติดตาม</h2>
+                        <div class="paper-inner">
+                            <a href="#" class="social-btn"><span><i class="fab fa-discord"></i> Discord Community</span></a>
+                            <a href="#" class="social-btn"><span><i class="fab fa-facebook"></i> Facebook Page</span></a>
+                        </div>
+                    </section>
+
+                    <section id="profile-settings" class="info-paper hidden">
+                        <h2 data-th="👤 โปรไฟล์ของฉัน" data-en="👤 My Profile">👤 โปรไฟล์ของฉัน</h2>
+                        <div class="paper-inner profile-layout">
+                            <div class="profile-pic-large"><img src="po.jpeg" alt="Profile"></div>
+                            <div class="profile-name-area"><span class="user-name-text">You</span></div>
+                            <hr class="divider">
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <span>🎵 เสียงเพลง</span>
+                                    <label class="switch"><input type="checkbox" id="sound-toggle" checked><span class="slider round"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgm-opening" src="openingonwebsite.mp3" loop preload="auto"></audio>
+    <audio id="bgm-hub" src="menu_theme.mp3" loop preload="auto"></audio>
+    <audio id="sfx-click" src="click.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('PWA Registered'))
+                    .catch(err => console.log('PWA Failed', err));
+            });
+        }
+    </script>
+</body>
+</html>
                 <div id="modal-content-area">
                     <section id="rules" class="info-paper hidden">
                         <h2 data-th="📜 พระราชบัญญัติคุกกี้" data-en="📜 Cookie Constitution">📜 พระราชบัญญัติคุกกี้ (Server Rules)</h2>
