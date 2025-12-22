@@ -1,0 +1,12 @@
+{
+  "background_color": "#d3b8d5",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "cookie run kingdom role play",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "CRK RP",
+  "start_url": "https://odeminnie.github.io/cookie-run-kingdom-role-play/",
+  "theme_color": "#8a6262",
+  "lang": "th"
+}
