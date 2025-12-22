@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Run Kingdom Roleplay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Mali:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="prologue-screen">
+        <div class="prologue-content">
+            <div class="witch-icon">🧙‍♀️</div>
+            <h2 data-th="เตาอบกำลังจะเปิด..." data-en="The Oven is Opening...">เตาอบกำลังจะเปิด...</h2>
+            <p data-th="โลกแห่ง Cookie Run Kingdom กำลังจะเป็นจริงในโลกแห่ง Minecraft เตรียมตัวให้พร้อม... เราจะหนีออกจากเตาอบและสร้างอาณาจักรไปด้วยกัน!" 
+               data-en="The world of Cookie Run Kingdom is coming to Minecraft! Get ready... let's escape the oven and build a kingdom together!">
+                โลกแห่ง <strong>Cookie Run Kingdom</strong> กำลังจะเป็นจริงในโลกแห่ง <strong>Minecraft</strong><br>
+                เตรียมตัวให้พร้อม... เราจะหนีออกจากเตาอบและสร้างอาณาจักรไปด้วยกัน!
+            </p>
+            <button id="btn-next-step" class="cookie-btn">continue</button>
+        </div>
+    </div>
+
+    <div id="title-screen" class="hidden">
+        <div class="title-wrapper">
+            <div class="logo-container">
+                <img src="crk-logo.png" alt="Cookie Run Kingdom Logo" class="game-logo floating">
+            </div>
+            
+            <div class="start-text-container">
+                <p class="blink-text desktop-text"> </p>
+                <p class="blink-text mobile-text">Tap Screen to Start</p>
+            </div>
+        </div>
+
+        <div class="mc-tip-container">
+            <span id="mc-tip-text" class="mc-tip-text">รู้หรือไม่: คุกกี้ไม่ควรลงน้ำนะ!</span>
+        </div>
+
+        <div class="version-text">ver 0.1.0 (โค้ดเบต้า) | Powered by milky way cookie</div>
+    </div>
+
+    <div id="kingdom-hub" class="hidden">
+        
+        <header class="hub-header">
+            <div class="header-left">
+                <span class="currency gem">💎 0</span>
+                <span class="currency coin">💰 0</span>
+            </div>
+            <div class="header-right" onclick="openModal('profile-settings')" style="cursor: pointer;">
+                <div class="profile-badge">
+                    <img src="po.jpeg" alt="Profile">
+                    <span id="user-name-display">You</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="hub-center">
+            
+            <div class="main-cta-container">
+                <a href="https://discord.gg/tSr3ugaMvn" target="_blank" class="discord-gate-btn">
+                    <div class="btn-shine"></div>
+                    <div class="btn-content">
+                        <span class="btn-icon">🏰</span>
+                        <div class="btn-text">
+                            <h3 data-th="JOIN KINGDOM" data-en="JOIN KINGDOM">JOIN KINGDOM</h3>
+                            <span data-th="เข้าสู่ Discord (Official)" data-en="Join Official Discord">เข้าสู่ Discord (Official)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="sub-menu-grid">
+                <button onclick="openModal('rules')" class="menu-item item-rules">
+                    <span class="icon">📜</span>
+                    <span class="label" data-th="กฎอาณาจักร" data-en="Kingdom Rules">กฎอาณาจักร</span>
+                </button>
+                
+                <a href="https://forms.gle/LinkSamak" target="_blank" class="menu-item item-apply">
+                    <span class="icon">📝</span>
+                    <span class="label" data-th="ใบสมัครพลเมือง" data-en="Citizenship App">ใบสมัครพลเมือง</span>
+                </a>
+
+                <button onclick="openModal('minigames')" class="menu-item item-games">
+                    <span class="icon">⚔️</span>
+                    <span class="label" data-th="ข้อมูลอารีน่า" data-en="Arena Info">ข้อมูลอารีน่า</span>
+                </button>
+
+                <button onclick="openModal('store')" class="menu-item item-store">
+                    <span class="icon">🛒</span>
+                    <span class="label" data-th="ร้านค้ากิลด์" data-en="Guild Store">ร้านค้ากิลด์</span>
+                </button>
+
+                <a href="story.html" class="menu-item item-gallery">
+                    <span class="icon">🌠</span>
+                    <span class="label" data-th="story" data-en="story">story</span>
+                </a>
+
+                <button onclick="openModal('game-selector')" class="menu-item item-play-game">
+                    <span class="icon">🎮</span>
+                    <span class="label" data-th="เล่นมินิเกม" data-en="Play Minigames">เล่นมินิเกม</span>
+                </button>
+
+                <button onclick="openModal('music')" class="menu-item item-music">
+                    <span class="icon">🎵</span>
+                    <span class="label" data-th="เพลงอาณาจักร" data-en="Kingdom Music">เพลงอาณาจักร</span>
+                </button>
+
+                <button onclick="openModal('news')" class="menu-item item-news">
+                    <span class="icon">📢</span>
+                    <span class="label" data-th="ข่าวสาร/ติดตาม" data-en="News & Social">ข่าวสาร/ติดตาม</span>
+                </button>
+            </div>
+
+        </main>
+
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal-window">
+                <button class="close-modal-btn" onclick="closeModal()">&times;</button>
+                <div id="modal-content-area">
+                    
+                    <section id="rules" class="info-paper hidden">
+                        <h2 data-th="📜 พระราชบัญญัติคุกกี้" data-en="📜 Cookie Constitution">📜 พระราชบัญญัติคุกกี้ (Server Rules)</h2>
+                        <div class="paper-inner">
+                            <p class="quote" data-th='"เพื่อความกรอบอร่อยและสันติสุขแห่ง Earthbread จงปฏิบัติตามนี้"' data-en='"For the crispiness and peace of Earthbread, follow these rules."'>"เพื่อความกรอบอร่อยและสันติสุขแห่ง Earthbread จงปฏิบัติตามนี้"</p>
+                            <ul class="cookie-rules-list">
+                                <li data-th="1. No Crumbs Left Behind: เคารพกันและกัน ห้ามบูลลี่ (OOC)" data-en="1. No Crumbs Left Behind: Respect each other, No bullying (OOC)"><strong>1. No Crumbs Left Behind</strong> เคารพกันและกัน ห้ามบูลลี่ ห้ามเหยียด (OOC)</li>
+                                <li data-th="2. Roleplay Logic: ห้าม Power-gaming หรือ Metagaming" data-en="2. Roleplay Logic: No Power-gaming or Metagaming"><strong>2. Roleplay Logic</strong> ห้าม Power-gaming หรือ Metagaming เล่นตามบทบาท</li>
+                                <li data-th="3. Kingdom Harmony: ห้ามทุบทำลายสิ่งก่อสร้าง หรือขโมยสมบัติ" data-en="3. Kingdom Harmony: Do not destroy buildings or steal treasures"><strong>3. Kingdom Harmony</strong> ห้ามทุบทำลายสิ่งก่อสร้าง หรือขโมยสมบัติเพื่อน</li>
+                                <li data-th="4. Voice Etiquette: ใช้ไมค์สุภาพ และใช้ Push-to-Talk เสมอ" data-en="4. Voice Etiquette: Be polite in VC, use Push-to-Talk"><strong>4. Voice Etiquette</strong> ใช้ไมค์สุภาพ และใช้ Push-to-Talk เสมอ</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="game-selector" class="info-paper theme-blue hidden">
+                        <h2 data-th="🎮 เลือกการผจญภัย" data-en="🎮 Select Game">🎮 เลือกเกม</h2>
+                        <div class="paper-inner">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <button onclick="navigateGame('PIU_MP3_edition/minigames.html')" class="menu-item" style="box-shadow: 0 6px 0 #2980B9; width: 100%;">
+                                    <span class="icon"></span>
+                                    <span class="label" data-th="PIU MP3 edition" data-en="PIU MP3 edition">PIU MP3 edition</span>
+                                </button>
+                                <button onclick="navigateGame('PIU_YouTube_edition/minigames.html')" class="menu-item" style="box-shadow: 0 6px 0 #2980B9; width: 100%;">
+                                    <span class="icon"></span>
+                                    <span class="label" data-th="PIU YouTube edition" data-en="PIU YouTube edition">PIU YouTube edition</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="minigames" class="info-paper theme-blue hidden">
+                        <h2 data-th="⚔️ Kingdom Arena" data-en="⚔️ Kingdom Arena">⚔️ Kingdom Arena</h2>
+                        <div class="paper-inner">
+                            <div class="game-card">
+                                <h3>🏃 Cookie Parkour</h3>
+                                <p data-th="กระโดดหนีเตาอบ! ผ่านด่านสุดโหดเพื่อชิงเพชร" data-en="Jump to escape! Clear hard stages to win Gems.">กระโดดหนีเตาอบ! ผ่านด่านสุดโหดเพื่อชิงเพชร</p>
+                            </div>
+                            <div class="game-card">
+                                <h3>🍰 Cake Monster Defense</h3>
+                                <p data-th="ปกป้องเมืองจากกองทัพเค้กยักษ์ที่บุกมาทุกคืน" data-en="Defend the city from Cake Monsters every night.">ปกป้องเมืองจากกองทัพเค้กยักษ์ที่บุกมาทุกคืน</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="store" class="info-paper theme-yellow hidden">
+                        <h2 data-th="🛒 ร้านค้ากิลด์" data-en="🛒 Guild Store">🛒 ร้านค้ากิลด์ (Supporter)</h2>
+                        <div class="paper-inner">
+                            <p data-th="สนับสนุนค่าเซิร์ฟเวอร์เพื่อให้เตาอบของเราเปิดต่อไปได้!" data-en="Support server costs to keep our oven running!">สนับสนุนค่าเซิร์ฟเวอร์เพื่อให้เตาอบของเราเปิดต่อไปได้!</p>
+                            <button class="store-btn" style="width:100%; padding: 15px; border-radius: 10px; background: var(--crk-orange); color: white; border: none; font-weight: bold; cursor: pointer;">💎 Top-up Diamond (Soon)</button>
+                        </div>
+                    </section>
+
+                    <section id="music" class="info-paper theme-pink hidden">
+                        <h2 data-th="🎵 เพลงแห่งอาณาจักร" data-en="🎵 Kingdom Music">🎵 เพลงแห่งอาณาจักร</h2>
+                        <div class="paper-inner">
+                            <p style="text-align: center; color: #888;">Playlist ที่คัดสรรมาเพื่อการสร้างเมือง</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 10px; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>🎹 Main Theme</span>
+                                    <button onclick="triggerDevAlert()" style="background: var(--crk-pink); color: white; border: none; border-radius: 5px; padding: 5px 10px; cursor: pointer;">▶ Play</button>
+                                </li>
+                                <li style="padding: 10px; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>⚔️ Arena Battle</span>
+                                    <button onclick="triggerDevAlert()" style="background: var(--crk-pink); color: white; border: none; border-radius: 5px; padding: 5px 10px; cursor: pointer;">▶ Play</button>
+                                </li>
+                                <li style="padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>🏰 Kingdom Park</span>
+                                    <button onclick="triggerDevAlert()" style="background: var(--crk-pink); color: white; border: none; border-radius: 5px; padding: 5px 10px; cursor: pointer;">▶ Play</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="news" class="info-paper theme-green hidden">
+                        <h2 data-th="📢 ข่าวสาร & ติดตาม" data-en="📢 News & Social">📢 ข่าวสาร & ติดตาม</h2>
+                        <div class="paper-inner">
+                            <p style="text-align: center; margin-bottom: 20px;">ติดตามข่าวสารการอัปเดตเซิร์ฟเวอร์ได้ที่นี่</p>
+                            
+                            <a href="#" target="_blank" class="social-btn">
+                                <span><i class="fab fa-facebook" style="color: #1877F2; margin-right: 10px;"></i> Facebook Page</span>
+                                <i class="fas fa-chevron-right" style="color: #ccc;"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-btn">
+                                <span><i class="fab fa-twitter" style="color: #1DA1F2; margin-right: 10px;"></i> Twitter / X</span>
+                                <i class="fas fa-chevron-right" style="color: #ccc;"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-btn">
+                                <span><i class="fab fa-discord" style="color: #5865F2; margin-right: 10px;"></i> Discord Community</span>
+                                <i class="fas fa-chevron-right" style="color: #ccc;"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-btn">
+                                <span><i class="fab fa-youtube" style="color: #FF0000; margin-right: 10px;"></i> Youtube Channel</span>
+                                <i class="fas fa-chevron-right" style="color: #ccc;"></i>
+                            </a>
+                        </div>
+                    </section>
+
+                    <section id="profile-settings" class="info-paper hidden">
+                        <h2 data-th="👤 โปรไฟล์ของฉัน" data-en="👤 My Profile">👤 โปรไฟล์ของฉัน</h2>
+                        <div class="paper-inner profile-layout">
+                            
+                            <div class="profile-pic-large">
+                                <img src="po.jpeg" alt="Big Profile">
+                            </div>
+
+                            <div class="profile-name-area">
+                                <span class="user-name-text">You</span>
+                                <button class="edit-name-btn" onclick="triggerDevAlert()">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                            </div>
+
+                            <hr class="divider">
+
+                            <div class="settings-grid">
+                                
+                                <div class="setting-item">
+                                    <span data-th="🎵 เสียงเพลง" data-en="🎵 Music & SFX">🎵 เสียงเพลง</span>
+                                    <label class="switch">
+                                        <input type="checkbox" id="sound-toggle" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+
+                                <div class="setting-item">
+                                    <span data-th="🌐 ภาษา" data-en="🌐 Language">🌐 ภาษา (TH/EN)</span>
+                                    <div class="lang-switch-btn" onclick="toggleLanguage()">
+                                        <span id="current-lang-disp">TH</span>
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <hr class="divider">
+
+                            <button class="google-login-btn" onclick="triggerDevAlert()">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDhJ9LZAzo2aHVJgm8MtfEJaQFgMaJVdUjpZz8D8Z_rg&s" alt="G">
+                                <span data-th="เข้าสู่ระบบด้วย Google" data-en="Sign in with Google">เข้าสู่ระบบด้วย Google</span>
+                            </button>
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgm-opening" src="openingonwebsite.mp3" loop preload="auto"></audio>
+    
+    <audio id="bgm-hub" src="menu_theme.mp3" loop preload="auto"></audio>
+
+    <audio id="sfx-click" src="click.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

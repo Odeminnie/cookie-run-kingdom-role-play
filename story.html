@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Story - Cookie Run Kingdom RP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Mali:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #2C1810;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #FFF4D6;
+        }
+        .waiting-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 30px;
+            border: 4px dashed #FF9E2C;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .oven-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: shake 0.5s infinite;
+        }
+        h1 { font-family: 'Baloo 2', cursive; color: #FF9E2C; }
+        p { font-family: 'Mali', cursive; line-height: 1.6; font-size: 18px; }
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #E83B3B;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 5px 0 #a32929;
+            transition: 0.2s;
+        }
+        .back-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #a32929; }
+        
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="waiting-container">
+        <div class="oven-icon">🔥</div>
+        <h1>ใจเย็นๆ นะเจ้าคุกกี้!</h1>
+        <p>
+            ตำนานน่ะมันยังไม่เริ่มหรอก... <br>
+            เพราะตอนนี้ <strong>Roleplay ยังไม่เปิด!</strong> <br>
+            พวกเรายังนอนอืดอยู่ในเตาอบอยู่เลย แป้งยังไม่เซ็ตตัว ผงฟูก็ยังไม่ทำงาน!
+        </p>
+        <p style="font-size: 14px; color: #FFD29D; border-top: 1px solid rgba(255,255,255,0.2); pt-3; margin-top: 15px;">
+            กรุณาไปตามจิกแอดมินให้รีบเปิดเซิร์ฟเร็วๆ <br>
+            ก่อนที่พวกเราจะกลายเป็นคุกกี้ไหม้กันหมดนะจ๊ะ!
+        </p>
+        
+        <a href="index.html" class="back-btn">🏃 กลับไปรอหน้าบ้านก่อน!</a>
+    </div>
+
+</body>
+</html>
