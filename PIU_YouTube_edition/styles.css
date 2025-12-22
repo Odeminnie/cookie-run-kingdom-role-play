@@ -1,0 +1,159 @@
+body {
+    margin: 0; background-color: #050510; color: white;
+    font-family: 'Orbitron', sans-serif; overflow: hidden;
+    touch-action: none; width: 100vw; height: 100vh;
+}
+
+/* --- เพิ่มเติม: หน้าจอ Overlay (Disclaimer & Trailer) --- */
+.overlay-screen {
+    position: fixed; inset: 0; z-index: 200;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    background: radial-gradient(circle at center, #1a0b2e 0%, #000 100%);
+    text-align: center; padding: 20px;
+}
+
+.glass-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px; border-radius: 20px;
+    border: 1px solid #ff00ff; backdrop-filter: blur(15px);
+    max-width: 600px;
+}
+
+.warning-text { color: #ff0000; font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 0 10px #ff0000; }
+
+.continue-btn {
+    margin-top: 30px; padding: 15px 40px;
+    background: transparent; border: 2px solid #00f3ff;
+    color: #00f3ff; font-family: 'Orbitron'; cursor: pointer;
+    font-weight: bold; font-size: 1rem; transition: 0.3s;
+}
+.continue-btn:hover { background: #00f3ff; color: #000; box-shadow: 0 0 20px #00f3ff; }
+
+.main-title { font-size: clamp(3rem, 10vw, 5.5rem); margin: 0; filter: drop-shadow(0 0 15px #ff00ff); }
+.sub-title { color: #00f3ff; letter-spacing: 5px; margin-bottom: 50px; font-size: 1.2rem; }
+
+.blink-text {
+    font-size: 1.5rem; color: #fff;
+    animation: blink 1s step-end infinite;
+    text-shadow: 0 0 10px #fff;
+    cursor: pointer;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- YouTube Background --- */
+#yt-bg-container {
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; overflow: hidden; pointer-events: none;
+}
+#yt-player {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh;
+}
+#video-overlay {
+    position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 1;
+}
+
+/* --- Click to Play Overlay --- */
+#click-to-play {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+    z-index: 1000; display: none; flex-direction: column;
+    justify-content: center; align-items: center; cursor: pointer;
+}
+.play-circle {
+    border: 5px solid #00f3ff; border-radius: 50%;
+    width: 120px; height: 120px; display: flex; justify-content: center; align-items: center;
+    margin-bottom: 20px; box-shadow: 0 0 20px #00f3ff;
+}
+.play-triangle {
+    width: 0; height: 0; border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent; border-left: 40px solid #ff00ff;
+    margin-left: 15px;
+}
+
+#portrait-alert {
+    display: none; position: absolute; inset: 0;
+    background: rgba(0,0,0,0.9); z-index: 999;
+    justify-content: center; align-items: center; pointer-events: none;
+}
+#portrait-alert h1 { color: #ff00ff; transform: rotate(90deg); }
+
+@media (orientation: portrait) {
+    #game-container #portrait-alert { display: flex; }
+}
+
+.bg-animation {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #1a0b2e 0%, #000 100%); z-index: -2;
+}
+
+.grid-floor {
+    position: fixed; bottom: 0; width: 100%; height: 60%;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(0, 243, 255, 0.1) 25%, rgba(0, 243, 255, 0.1) 26%, transparent 27%),
+                      linear-gradient(90deg, transparent 24%, rgba(0, 243, 255, 0.1) 25%, rgba(0, 243, 255, 0.1) 26%, transparent 27%);
+    background-size: 60px 60px;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: bottom; z-index: -1;
+    animation: moveGrid 3s linear infinite;
+    opacity: 0.4;
+}
+@keyframes moveGrid { from { background-position: 0 0; } to { background-position: 0 60px; } }
+
+#setup-panel {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px);
+    z-index: 150; position: fixed; width: 100%; overflow-y: auto;
+}
+
+.game-title { font-size: 3rem; color: #ff00ff; text-shadow: 0 0 20px #ff00ff; font-weight: 900; }
+
+.setup-box {
+    background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 20px;
+    border: 1px solid rgba(0, 243, 255, 0.5); width: 90%; max-width: 450px;
+    display: flex; flex-direction: column; gap: 10px;
+}
+.input-group label { display: block; margin-bottom: 5px; color: #00f3ff; font-size: 0.8rem; }
+.input-group input { width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 8px; box-sizing: border-box; }
+.diff-buttons { display: flex; gap: 10px; }
+.diff-btn { flex: 1; padding: 10px; background: #222; color: #888; border: 1px solid #444; border-radius: 8px; cursor: pointer; }
+.diff-btn.active { border-color: #00f3ff; color: #00f3ff; }
+
+.start-btn {
+    width: 100%; padding: 15px; background: linear-gradient(45deg, #ff00ff, #00f3ff);
+    border: none; color: white; font-weight: bold; border-radius: 50px;
+    font-size: 1.2rem; cursor: pointer;
+}
+
+#game-container { position: relative; width: 100vw; height: 100vh; display: flex; flex-direction: column; }
+#play-area { position: relative; flex: 1; width: 100%; overflow: hidden; background: transparent; }
+
+#receptor-area {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 50%; max-width: 600px; z-index: 5;
+}
+#receptor-img { width: 100%; }
+canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
+
+#feedback-overlay {
+    position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 20; text-align: center; pointer-events: none;
+}
+#judge-img { width: 140px; opacity: 0; }
+#combo-text { font-size: 60px; font-weight: 900; color: #fff; text-shadow: 0 0 15px #00f3ff; }
+
+/* Controller */
+#controller-area { position: absolute; inset: 0; pointer-events: none; z-index: 30; }
+.pad-container {
+    position: absolute; bottom: 20px; width: 220px; height: 220px;
+    pointer-events: auto; display: flex; flex-direction: column; align-items: center;
+}
+.left-pad { left: 40px; }
+.right-pad { right: 40px; }
+.pad-row { display: flex; justify-content: center; gap: 8px; width: 100%; }
+.pad-row.top { margin-bottom: -15px; }
+.pad-row.mid { z-index: 2; }
+.pad-row.bot { margin-top: -15px; }
+.pad-key { width: 70px; height: 70px; opacity: 0.7; transition: transform 0.05s; }
+.pad-key img { width: 100%; height: 100%; pointer-events: none; }
+.pad-key.pressed { opacity: 1; transform: scale(0.9); filter: brightness(1.5); }

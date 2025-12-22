@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pump It Up HTML5 Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-floor"></div>
+
+    <div id="disclaimer-screen" class="overlay-screen">
+        <div class="glass-box">
+            <h2 class="warning-text">WARNING</h2>
+            <p>เกมนี้เป็นโปรเจกต์ HTML5 สำหรับฝึกทักษะ การเล่นอาจมีการใช้แสงสีที่ฉูดฉาด</p>
+            <p>This game is a rhythm-based fan project.</p>
+            <button class="continue-btn" onclick="showTrailer()">CONTINUE</button>
+        </div>
+    </div>
+
+    <div id="trailer-screen" class="overlay-screen" style="display:none;">
+        <div class="trailer-content">
+            <h1 class="game-title main-title">PUMP IT UP</h1>
+            <h2 class="sub-title">HTML5 EDITION</h2>
+            <div class="blink-text" id="start-prompt">TOUCH SCREEN TO START</div>
+        </div>
+        <audio id="trailer-audio" loop>
+            <source src="assets/trailer_bgm.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div id="setup-panel" style="display:none;">
+        <h1 class="game-title">NEON BEAT</h1>
+        <div class="setup-box">
+            <div class="input-group">
+                <label>🎬 YouTube URL</label>
+                <input type="text" id="youtubeUrl" placeholder="วางลิงก์จาก YouTube ที่นี่...">
+            </div>
+            <div class="input-group" style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label>⏱️ โน้ตเริ่ม (วินาที)</label>
+                    <input type="number" id="noteStartTime" value="5">
+                </div>
+                <div style="flex: 1;">
+                    <label>🛑 โน้ตจบ (วินาที)</label>
+                    <input type="number" id="noteEndTime" value="180">
+                </div>
+            </div>
+            <div class="input-group">
+                <label>⚡ BPM (กำหนดจังหวะ Random)</label>
+                <input type="number" id="bpmInput" value="130">
+            </div>
+            <div class="difficulty-selector">
+                <label>ความยาก</label>
+                <div class="diff-buttons">
+                    <button class="diff-btn easy" onclick="selectDifficulty('easy')">EASY</button>
+                    <button class="diff-btn normal active" onclick="selectDifficulty('normal')">NORMAL</button>
+                    <button class="diff-btn hard" onclick="selectDifficulty('hard')">HARD</button>
+                </div>
+            </div>
+            <div class="auto-play-wrapper" style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" id="autoPlay" style="width: 20px; height: 20px;">
+                <label for="autoPlay" style="color: #00f3ff; font-size: 0.9rem;">🤖 AUTO PLAY</label>
+            </div>
+            <button class="start-btn" onclick="startGame()">START GAME ▷</button>
+        </div>
+    </div>
+
+    <div id="game-container" style="display:none;">
+        <div id="click-to-play">
+            <div class="play-circle">
+                <div class="play-triangle"></div>
+            </div>
+            <h2>TAP TO START</h2>
+        </div>
+        <div id="yt-bg-container">
+            <div id="yt-player"></div>
+            <div id="video-overlay"></div>
+        </div>
+        <div id="portrait-alert"><h1>PLEASE ROTATE</h1></div>
+        <div id="play-area">
+            <div id="receptor-area"><img src="assets/receptor.png" alt="Receptors" id="receptor-img"></div>
+            <canvas id="gameCanvas"></canvas>
+            <div id="feedback-overlay">
+                <img id="judge-img" src="" style="opacity: 0;">
+                <div id="combo-container"><span id="combo-text"></span></div>
+            </div>
+        </div>
+        <div id="controller-area">
+            <div class="pad-container left-pad">
+                <div class="pad-row top">
+                    <div class="pad-key ul" data-lane="1"><img src="assets/btn_1.png"></div>
+                    <div class="pad-key ur" data-lane="3"><img src="assets/btn_3.png"></div>
+                </div>
+                <div class="pad-row mid"><div class="pad-key ce" data-lane="2"><img src="assets/btn_2.png"></div></div>
+                <div class="pad-row bot">
+                    <div class="pad-key dl" data-lane="0"><img src="assets/btn_0.png"></div>
+                    <div class="pad-key dr" data-lane="4"><img src="assets/btn_4.png"></div>
+                </div>
+            </div>
+            <div class="pad-container right-pad">
+                <div class="pad-row top">
+                    <div class="pad-key ul" data-lane="1"><img src="assets/btn_1.png"></div>
+                    <div class="pad-key ur" data-lane="3"><img src="assets/btn_3.png"></div>
+                </div>
+                <div class="pad-row mid"><div class="pad-key ce" data-lane="2"><img src="assets/btn_2.png"></div></div>
+                <div class="pad-row bot">
+                    <div class="pad-key dl" data-lane="0"><img src="assets/btn_0.png"></div>
+                    <div class="pad-key dr" data-lane="4"><img src="assets/btn_4.png"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="result-panel" style="display:none;">
+        <h1 class="result-title">STAGE CLEAR</h1>
+        <div class="result-box">
+            <div class="res-row"><span>PERFECT</span> <span id="res-perfect">0</span></div>
+            <div class="res-row"><span>BAD</span> <span id="res-bad">0</span></div>
+            <div class="res-row"><span>MISS</span> <span id="res-miss">0</span></div>
+            <div class="res-row total"><span>MAX COMBO</span> <span id="res-combo">0</span></div>
+            <button class="start-btn" style="margin-top:20px;" onclick="location.reload()">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
