@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Beat PIU - Enhanced Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-floor"></div>
+
+    <div id="setup-panel">
+        <h1 class="game-title">NEON BEAT</h1>
+        <div class="setup-box">
+            <div class="input-group">
+                <label>🎵 เลือกเพลง (MP3)</label>
+                <input type="file" id="audioFile" accept="audio/*">
+            </div>
+            <div class="input-group">
+                <label>⚡ BPM (ความเร็วเพลง)</label>
+                <input type="number" id="bpmInput" value="130">
+            </div>
+            <div class="difficulty-selector">
+                <label>ระดับความยาก</label>
+                <div class="diff-buttons">
+                    <button class="diff-btn easy" onclick="selectDifficulty('easy')">EASY</button>
+                    <button class="diff-btn normal active" onclick="selectDifficulty('normal')">NORMAL</button>
+                    <button class="diff-btn hard" onclick="selectDifficulty('hard')">HARD</button>
+                </div>
+            </div>
+            <div class="auto-play-wrapper" style="margin: 20px 0; display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" id="autoPlay" style="width: 20px; height: 20px; cursor: pointer;">
+                <label for="autoPlay" style="color: #00f3ff; cursor: pointer; font-size: 0.9rem;">🤖 AUTO PLAY MODE</label>
+            </div>
+            <button class="start-btn" onclick="startGame()">START GAME</button>
+        </div>
+    </div>
+
+    <div id="game-container" style="display:none;">
+        <div id="play-area">
+            <div id="receptor-area">
+                <img src="assets/receptor.png" alt="Receptors" id="receptor-img">
+            </div>
+            <canvas id="gameCanvas"></canvas>
+            <div id="feedback-overlay">
+                <img id="judge-img" src="" style="opacity: 0;">
+                <div id="combo-container">
+                    <span id="combo-text"></span>
+                </div>
+            </div>
+        </div>
+        <div id="controller-area">
+            <div class="row top-row">
+                <div class="btn-wrapper"><img src="assets/btn_1.png" class="pad-btn" data-lane="1"></div>
+                <div class="btn-wrapper"><img src="assets/btn_3.png" class="pad-btn" data-lane="3"></div>
+            </div>
+            <div class="row mid-row">
+                <div class="btn-wrapper"><img src="assets/btn_2.png" class="pad-btn" data-lane="2"></div>
+            </div>
+            <div class="row bot-row">
+                <div class="btn-wrapper"><img src="assets/btn_0.png" class="pad-btn" data-lane="0"></div>
+                <div class="btn-wrapper"><img src="assets/btn_4.png" class="pad-btn" data-lane="4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="result-panel" style="display:none;">
+        <h1 class="result-title">STAGE CLEAR</h1>
+        <div class="result-box">
+            <div class="res-row"><span>PERFECT</span> <span id="res-perfect">0</span></div>
+            <div class="res-row"><span>BAD</span> <span id="res-bad">0</span></div>
+            <div class="res-row"><span>MISS</span> <span id="res-miss">0</span></div>
+            <div class="res-row total"><span>MAX COMBO</span> <span id="res-combo">0</span></div>
+            <button class="start-btn" style="margin-top:20px;" onclick="location.reload()">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
