@@ -4,7 +4,6 @@
   "description": "Build your kingdom in Minecraft!",
   "start_url": "index.html",
   "display": "standalone",
-  "orientation": "any",
   "background_color": "#2C1810",
   "theme_color": "#FF9E2C",
   "icons": [
